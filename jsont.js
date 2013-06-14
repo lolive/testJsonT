@@ -29,7 +29,7 @@ function jsonT(self, rules) {
 			return Object.keys(rules)
 			.filter(function rulesEndingByX
 			 (ruleName){
-			 return (x.match(ruleName+'$')?true:false)})
+			 return x.indexOf(ruleName, x.length - ruleName.length) !== -1})
 			.sort(function longestFirst
 			 (ruleName1, ruleName2)
 			 {return ruleName1.length<ruleName2.length})
