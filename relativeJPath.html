@@ -1,0 +1,55 @@
+<html>
+<head>
+<script src="jsont.js">
+</script>
+<script src="http://code.jquery.com/jquery-2.0.2.min.js">
+</script>
+<script>
+function runJsonT() {
+var jsonText = (document.getElementById('json'));
+var json = JSON.parse(jsonText.value);
+var rules = JSON.parse(document.getElementById('rules').value);
+var result = jsonT(json, rules);
+var div = $("div");
+result = div.html(result);
+alert(result.html());
+document.getElementById("result").innerHTML = result.html();
+};
+</script>
+</head>
+<body>
+<table width="100%">
+<colgroup>
+       <col span="1" style="width: 50%;">
+       <col span="1" style="width: 50%;">
+    </colgroup>
+<thead>
+<tr>
+<th>
+JSON:
+</th>
+<th>
+Transfo:
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<textarea rows="20" style="width: 100%" id="json">
+{ "link": {"uri":{"value": "http://company.com", "display": "none"}, "title":"company homepage" }}
+</textarea>
+</td>
+<td>
+<textarea rows="20" style="width: 100%" id="rules">
+ { "link": "<a href=\"{$.uri}\">{$.title}</a>" ,
+   "uri": "{$.value}"} 
+</textarea>
+</td>
+</tr>
+</tbody>
+</table>
+<input type="button" value="--- Run ---" onclick="runJsonT();" style="width: 100%"></input>
+<div id="result"/>
+</body>
+</html>
