@@ -8006,7 +8006,10 @@ Transfo:
 <td>
 <!-- Transfo -->
 <textarea rows="20" style="width: 100%" id="rules">
- { "features[*]": "{$.properties.identifier} a :{$.type} . " }
+ { "features[*]": "{$.properties.identifier} a :{$.type} {$.properties} . " ,
+   "properties": "{$.quicklook}",
+   "quicklook": "; :quicklook \"{$}\""
+ }
  </textarea>
 </td>
 </tr>
