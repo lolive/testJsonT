@@ -1,6 +1,6 @@
 <html>
 <head>
-<script src="http://goessner.net/download/prj/jsont/jsont.js">
+<script src="jsont.js">
 </script>
 <script src="http://code.jquery.com/jquery-2.0.2.min.js">
 </script>
@@ -8006,7 +8006,10 @@ Transfo:
 <td>
 <!-- Transfo -->
 <textarea rows="20" style="width: 100%" id="rules">
- { "link": "<a href=\"{link.uri}\">{link.title}</a>" }
+ { "features[*]": "{$.properties.identifier} a :{$.type} {$.properties} . " ,
+   "properties": "{$.quicklook}",
+   "quicklook": "; :quicklook \"{$}\""
+ }
  </textarea>
 </td>
 </tr>
