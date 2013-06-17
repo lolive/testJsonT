@@ -8006,9 +8006,12 @@ Transfo:
 <td>
 <!-- Transfo -->
 <textarea rows="20" style="width: 100%" id="rules">
- { "features[*]": "{$.properties.identifier} a :{$.type} {$.properties} . " ,
-   "properties": "{$.quicklook}",
-   "quicklook": "; :quicklook \"{$}\""
+ { "features[*]": "{$.properties.identifier} a :{$.type} {$.properties} {$.geometry} . " ,
+   "properties": "{$.quicklook} ",
+   "quicklook": "; :quicklook \"{$}\"",
+   "geometry": "{$.coordinates}",
+   "coordinates[*][*]": "; :coordinates [ :long \"{$[0]} ; :lat {$[1]} ]\" " 
+   
  }
  </textarea>
 </td>
