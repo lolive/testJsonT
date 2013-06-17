@@ -23,8 +23,22 @@ function jsonT(self, rules) {
                                   }
                                )
                    },
-             x = expr.replace(/\[[0-9]+\]/g, "[*]"), 
+             x = expr, 
+             rulex, 
              res;
+do {
+         rulex = rules[(function ruleBestMatchingX(){ //Let's find the rule matching the current JSON path.
+			return Object.keys(rules)
+			.filter(function rulesEndingByX
+			 (ruleName){
+			 return x.indexOf(ruleName, x.length - ruleName.length) !== -1})
+			.sort(function longestFirst
+			 (ruleName1, ruleName2)
+			 {return ruleName1.length<ruleName2.length})
+			[0] })()];
+    x = expr.replace(/\[[0-9]+\]/, "[*]");
+} while (!rulex || x.matches("\[0-9+\]") );
+
          var rulex = rules[(function ruleBestMatchingX(){ //Let's find the rule matching the current JSON path.
 			return Object.keys(rules)
 			.filter(function rulesEndingByX
